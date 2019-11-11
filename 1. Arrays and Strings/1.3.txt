@@ -1,0 +1,38 @@
+Urilify the given string
+
+input : "happy birthday lorem    "
+output: "happy%20birthday%20lorem"
+
+the sting has enough no of spaces at the end of the string to compensate the extra characters 
+
+Method 1:
+Storing each word seperately and then iterating to get urilfied string
+
+string getURLify(string s){
+	if(s.length() < 0)
+		return "";
+	vector<string> words;
+	string word = "";
+	for(int i=0; i< s.length(); i++){
+		if(s[i] != ' ')
+			word += s[i];
+		else{
+			if(word.length())	
+				words.push_back(word);
+			word = "";
+		}
+	}
+	if(word.length())	
+		words.push_back(word);
+			
+	word = "";
+	reverse(words.begin(),words.end());
+	for(int i=0; i<words.size(); i++){
+		word += words[i];
+		if(i != words.size()-1 )
+			word += "%20";
+	}
+
+	return word;
+	
+}

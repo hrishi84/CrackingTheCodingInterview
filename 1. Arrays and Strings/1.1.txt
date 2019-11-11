@@ -1,0 +1,37 @@
+Implement an algo to determine if a string has all unique characters.
+
+Implementation using a Set.
+
+Step 1: Create an empty set<char> char_set
+
+Step 2: Iterate over the string and insert all characters to the set
+
+Step 3: Check if the size of set is equal to the length of string
+	if equal the string is unique
+	if not then string is unequal
+
+Time Complexity : O(n)
+Space Complexity: O(n)
+
+Implementation using knowlwdge of ASCII values
+
+if a string is of ASCII values or extended ASCII values
+We can create an array of boolean value of size 128/256
+
+for 128 ASCII
+Step 1: Check if size of string is less than 128
+
+Step 2: if greater then return false else continue
+
+Step 3: Intialise a boolean array of size 128 with intial value as false
+
+Step 4: iterate over the string 
+	Check if the current element is true or not from the boolean array // true means its already been visited
+	if yes return false
+	if not set the current element as false in boolean array
+
+Step 5: return true as no repeating element is found
+
+Time Complexity : O(n)
+
+Space Complexity : O(128) / O(256)

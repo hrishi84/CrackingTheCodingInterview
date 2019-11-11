@@ -1,0 +1,54 @@
+Check if two given strings are permutation of each other
+
+Method 1:
+
+bool isPermutation(string s1, string s2){
+	if(s1.length()!= s2.length())
+		return false;
+	
+	sort(s1.begin(), s1.end());
+	sort(s2.begin(), s2.end());
+
+	return s1 == s2;
+}
+
+space Complexity : O(0)
+time complexity: O(nlogn + nlogn) = O(nlogn)
+
+Method 2:
+
+bool isPermutation(string s1, string s2){
+	if(s1.length()!= s2.length())
+		return false;
+
+	unordered_map<char, int> char_map;
+
+	int i=0, n = s1.length();
+	for(i=0; i<n; i++){
+		if(char_map.find(s1[i]) == char_map.end()){
+			char_map[s1[i]] = 1;
+		}
+		else{
+			char_map[s1[i]]++;
+		}
+	}
+
+	for(i=0; i<n; i++){
+            cout << s2[i] << " " << char_map[s2[i]] << endl;
+		if(char_map.find(s2[i]) == char_map.end()){
+			return false;
+		}
+		else
+             char_map[s2[i]]--;
+        if(char_map[s2[i]] <= 0){
+				char_map.erase(s2[i]);
+			}
+	}
+    
+	if(char_map.size())
+		return 	false;
+	return true;
+}
+
+Space Complexity: O(n)
+Time Complexity: O(n+n) = O(n)
